@@ -1,6 +1,7 @@
 #Creation of book member and library classes with encapsulation
 #Introducing the underscore in front of the variables encapsulates them meaning that they are protected
 from enum import member
+from operator import truediv
 
 
 class Book:
@@ -30,3 +31,41 @@ class Student(Member):         #students can borrow a maximum of 7 books
 class Teachers(Member):        #teachers are allowed to borrow upto 10 books
     def max_books(self):
         return 10
+
+#Below we see the controlled access
+
+class Book:
+    def __init__(self, book_code, title):
+        self._book_code = book_code
+        self._title = title
+        self._is_borrowed = False
+
+    def is_borrowed(self):
+        return self._is_borrowed
+
+    def borrow(self):
+        if not self._is_borrowed:
+            self._is_borrowed = True
+            return True
+        return False
+
+    def return_book(self):
+        if self._is_borrowed:
+            self._is_borrowed = False
+            return True
+        return False
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
